@@ -23,7 +23,7 @@ public enum ReviewKit {
       self.positiveEvents.append(PositiveEvent(date: Date(), weight: weight))
       self.positiveEvents.removeAll { $0.date < Date().addingTimeInterval(.days(-self.criteria.eventsExpireAfterDays)) }
 
-      UserDefaults.standard.set(self.positiveEvents, forKey: "ReviewKit.positiveEvents")
+      UserDefaults.standard.set(self.positiveEvents.map(\.rawValue), forKey: "ReviewKit.positiveEvents")
    }
 
    static var positiveEvents: [PositiveEvent] = UserDefaults.standard
