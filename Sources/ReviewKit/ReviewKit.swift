@@ -8,7 +8,7 @@ public enum ReviewKit {
 
    /// Records a positive event and requests a review if the criteria are met. Use when a user has completed a workflow and is less likely to be annoyed.
    /// - Parameter weight: The weight of the positive event. Defaults to 1.
-   public static func recordPositiveEventAndRequestReviewIfAppropriate(weight: Int = 1) {
+   public static func recordPositiveEventAndRequestReviewIfCriteriaMet(weight: Int = 1) {
       self.recordPositiveEvent(weight: weight)
 
       let totalPositiveEventsWeight = self.positiveEvents.reduce(into: 0, { $0 += $1.weight })
