@@ -19,7 +19,9 @@ public enum ReviewKit {
          {
             SKStoreReviewController.requestReview(in: windowScene)
          } else {
+            #if !os(xrOS)
             SKStoreReviewController.requestReview()
+            #endif
          }
       }
    }
