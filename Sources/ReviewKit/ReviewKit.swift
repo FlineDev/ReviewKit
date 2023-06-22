@@ -13,7 +13,14 @@ public enum ReviewKit {
 
       let totalPositiveEventsWeight = self.positiveEvents.reduce(into: 0, { $0 += $1.weight })
       if totalPositiveEventsWeight >= self.criteria.minPositiveEventsWeight {
-         SKStoreReviewController.requestReview()
+         if
+            #available(iOS 14.0, *),
+            let windowScene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene
+         {
+            SKStoreReviewController.requestReview(in: windowScene)
+         } else {
+            SKStoreReviewController.requestReview()
+         }
       }
    }
 
