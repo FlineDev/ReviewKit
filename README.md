@@ -2,6 +2,7 @@
 
 Request reviews only from users with enough recent positive activity and only at appropriate times.
 
+Read the [Introduction Article](https://www.fline.dev/introducing-reviewkit/?ref=github.com) to learn how to best use ReviewKit in your app.
 
 ## Requirements
 
