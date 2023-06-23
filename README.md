@@ -1,6 +1,6 @@
 
 <p align="center">
-    <img src="https://github.com/FlineDev/ReviewKit/blob/main/Logo.png?raw=true" width=600>
+    <img src="https://github.com/FlineDev/ReviewKit/blob/main/Logo.png?raw=true" width=800>
 </p>
 
 # ReviewKit
