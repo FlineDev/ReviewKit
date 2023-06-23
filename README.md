@@ -1,3 +1,8 @@
+
+<p align="center">
+    <img src="https://github.com/FlineDev/ReviewKit/blob/main/Logo.png?raw=true" width=600>
+</p>
+
 # ReviewKit
 
 Request reviews only from users with enough recent positive activity and only at appropriate times.
