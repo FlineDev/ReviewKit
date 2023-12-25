@@ -51,6 +51,7 @@ I extracted this library _from_ and use it directly _in_ the following apps (che
 
 * [RemafoX: Easy App Localization](https://remafox.app/)
 * [Twoot it! – Schedule Posts](https://twoot-it.app/)
+* [CrossCraft: Custom Crosswords](https://crosscraft.app/)
 
 
 ## License
