@@ -42,7 +42,12 @@ Read the [Introduction Article](https://www.fline.dev/introducing-reviewkit/?ref
 
 That's it – you have configured App Review requests for your app!
 
-Note that ReviewKit is using Apple's `SKStoreReviewController` API internally. That API already encapsulates some logic to make sure not to ask users too often.
+
+### Notes
+
+* ReviewKit is using Apple's `SKStoreReviewController` API internally. That API already encapsulates some logic to make sure not to ask users too often.
+* That logic is turned off in `DEBUG` mode, so you might want to set `ReviewKit.enabledInDebugBuilds = false` once you've tested that everything works.
+* There's also a function `requestReviewIfCriteriaMet()` that does not record a positive event in case you need that.
 
 
 ## Showcases
