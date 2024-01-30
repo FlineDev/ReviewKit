@@ -43,7 +43,7 @@ public enum ReviewKit {
          } else {
             SKStoreReviewController.requestReview()
          }
-         #else
+         #elseif os(macOS)
          SKStoreReviewController.requestReview()
          #endif
       }
