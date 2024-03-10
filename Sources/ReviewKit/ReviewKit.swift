@@ -9,6 +9,9 @@ public enum ReviewKit {
    /// Turns off the review request inside an `#if DEBUG`. On by default (for testing purposes).
    public static var enabledInDebugBuilds: Bool = true
 
+   /// The amount of time (in seconds) between the minPositiveEventsWeight threshold being crossed and the review dialog being presented. This can be useful, for example, to prevent the review dialog from interrupting the user during their immediate workflow.
+   public static var reviewDelay: TimeInterval = 0.0
+
    /// Records a positive event and requests a review if the criteria are met. Use when a user has completed a workflow and is less likely to be annoyed.
    /// - Parameter weight: The weight of the positive event. Defaults to 1.
    public static func recordPositiveEventAndRequestReviewIfCriteriaMet(weight: Int = 1) {
@@ -34,19 +37,25 @@ public enum ReviewKit {
 
       let totalPositiveEventsWeight = self.positiveEvents.reduce(into: 0, { $0 += $1.weight })
       if totalPositiveEventsWeight >= self.criteria.minPositiveEventsWeight {
-         #if os(iOS)
-         if
-            #available(iOS 14.0, *),
-            let windowScene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene
-         {
-            SKStoreReviewController.requestReview(in: windowScene)
+         if reviewDelay > 0.0 {
+            DispatchQueue.main.asyncAfter(deadline: .now() + reviewDelay) { presentReview() }
          } else {
-            SKStoreReviewController.requestReview()
+            presentReview()
          }
-         #elseif os(macOS)
-         SKStoreReviewController.requestReview()
-         #endif
       }
+   }
+
+   private static func presentReview() {
+      #if os(iOS)
+      if #available(iOS 14.0, *),
+         let windowScene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene {
+         SKStoreReviewController.requestReview(in: windowScene)
+      } else {
+         SKStoreReviewController.requestReview()
+      }
+      #elseif os(macOS)
+      SKStoreReviewController.requestReview()
+      #endif
    }
 
    static var positiveEvents: [PositiveEvent] = UserDefaults.standard
