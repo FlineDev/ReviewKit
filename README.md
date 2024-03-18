@@ -54,9 +54,9 @@ That's it – you have configured App Review requests for your app!
 
 I extracted this library _from_ and use it directly _in_ the following apps (check them out to support me!):
 
-* [RemafoX: Easy App Localization](https://remafox.app/)
-* [Twoot it! – Schedule Posts](https://twoot-it.app/)
-* [CrossCraft: Custom Crosswords](https://crosscraft.app/)
+* [String Catalog Translator](https://apps.apple.com/app/apple-store/id6476773066?pt=549314&ct=github.com&mt=8)
+* [CrossCraft: Custom Crosswords]([https://crosscraft.app/](https://apps.apple.com/app/apple-store/id6472669260?pt=549314&ct=github.com&mt=8))
+* [FocusBeats: Pomodoro + Music](https://apps.apple.com/app/apple-store/id6477829138?pt=549314&ct=github.com&mt=8)
 
 
 ## License
