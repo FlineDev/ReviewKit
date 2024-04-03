@@ -40,7 +40,7 @@ Read the [Introduction Article](https://www.fline.dev/introducing-reviewkit/?ref
    ReviewKit.recordPositiveEvent()  // optionally, you can pass a custom `weight` parameter, defaults to 1
    ```
 
-5. (Optional) To get more reviews from users who have tried your app at least once, add this to your app entry point:
+5. (Optional) Get more reviews from users who tried your app at least once, add this to your app entry point:
 
    ```Swift
    @AppStorage("appStarts")
