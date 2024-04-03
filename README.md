@@ -73,7 +73,7 @@ That's it – you have configured App Review requests for your app!
 
 ## Showcase
 
-I extracted most of this library from these Indie apps (rate them with 5 stars to support me!):
+I extracted this library _from_ and use it _in_ these Indie apps (rate them with 5 stars to support me!):
 
 <table>
   <tr>
