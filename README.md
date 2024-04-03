@@ -40,6 +40,25 @@ Read the [Introduction Article](https://www.fline.dev/introducing-reviewkit/?ref
    ReviewKit.recordPositiveEvent()  // optionally, you can pass a custom `weight` parameter, defaults to 1
    ```
 
+5. (Optional) To get more reviews from users who have tried your app at least once, add this to your app entry point:
+
+   ```Swift
+   @AppStorage("appStarts")
+   var appStarts: Int = 0
+   ```
+
+   And attach this modifier to your apps' root view:
+
+   ```Swift
+   .onAppear {
+      self.appStarts += 1
+
+      if self.appStarts >= 2 {
+         ReviewKit.recordPositiveEventAndRequestReviewIfCriteriaMet()
+      }
+   }
+   ```
+
 That's it – you have configured App Review requests for your app!
 
 
