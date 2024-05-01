@@ -41,6 +41,11 @@ Read the [Introduction Article](https://www.fline.dev/introducing-reviewkit/?ref
    ```Swift
    ReviewKit.recordPositiveEvent()  // optionally, you can pass a custom `weight` parameter, defaults to 1
    ```
+   
+5. (Optional) Set a delay between crossing the threshold and showing the review request.
+   ```swift
+   ReviewKit.reviewDelay = 5.0
+   ```
 
 5. (Optional) Get more reviews from users who tried your app at least once, add this to your app entry point:
 
