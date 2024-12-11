@@ -33,7 +33,10 @@ public enum ReviewKit {
       #endif
 
       let totalPositiveEventsWeight = self.positiveEvents.reduce(into: 0, { $0 += $1.weight })
-      if totalPositiveEventsWeight >= self.criteria.minPositiveEventsWeight {
+      let firstPositiveEventDate = self.positiveEvents.first?.date ?? .distantFuture
+      let requiredDateToRequestReview = Calendar.current.date(byAdding: criteria.minimumTimeBeforeRequest, to: firstPositiveEventDate)
+
+      if totalPositiveEventsWeight >= self.criteria.minPositiveEventsWeight, let requiredDateToRequestReview, requiredDateToRequestReview < Date() {
          #if os(iOS)
          if
             #available(iOS 14.0, *),
