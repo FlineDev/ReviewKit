@@ -29,27 +29,27 @@ public enum ReviewKit {
    /// - Parameter weight: The weight of the positive event. Defaults to 1.
    public static func requestReviewIfCriteriaMet(weight: Int = 1) {
       #if DEBUG
-      guard self.enabledInDebugBuilds else { return }
+         guard self.enabledInDebugBuilds else { return }
       #endif
 
       let totalPositiveEventsWeight = self.positiveEvents.reduce(into: 0, { $0 += $1.weight })
       if totalPositiveEventsWeight >= self.criteria.minPositiveEventsWeight {
          #if os(iOS)
-         if
-            #available(iOS 14.0, *),
-            let windowScene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene
-         {
-            SKStoreReviewController.requestReview(in: windowScene)
-         } else {
-            SKStoreReviewController.requestReview()
-         }
+            if #available(iOS 14.0, *),
+               let windowScene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene
+            {
+               SKStoreReviewController.requestReview(in: windowScene)
+            } else {
+               SKStoreReviewController.requestReview()
+            }
          #elseif os(macOS)
-         SKStoreReviewController.requestReview()
+            SKStoreReviewController.requestReview()
          #endif
       }
    }
 
-   static var positiveEvents: [PositiveEvent] = UserDefaults.standard
+   static var positiveEvents: [PositiveEvent] =
+      UserDefaults.standard
       .array(forKey: "ReviewKit.positiveEvents")?
       .compactMap { $0 as? String }
       .compactMap { PositiveEvent(rawValue: $0) }
@@ -57,5 +57,5 @@ public enum ReviewKit {
 }
 
 extension TimeInterval {
-  static func days(_ value: Int) -> TimeInterval { Double(value) * 24 * 60 * 60 }
+   static func days(_ value: Int) -> TimeInterval { Double(value) * 24 * 60 * 60 }
 }
