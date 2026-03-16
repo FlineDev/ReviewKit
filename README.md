@@ -27,7 +27,7 @@ Read the [Introduction Article](https://www.fline.dev/introducing-reviewkit/?ref
    ```Swift
    import ReviewKit
    // ...
-   ReviewKit.criteria = ReviewCriteria(minPositiveEventsWeight: 5, eventsExpireAfterDays: 30)
+   ReviewKit.criteria = ReviewCriteria(minPositiveEventsWeight: 5, eventsExpireAfterDays: 30, minimumTimeBeforeRequest: DateComponents(day: 1))
    ```
 
 3. Determine common workflows in your app and when a user completes one of them, call this:
